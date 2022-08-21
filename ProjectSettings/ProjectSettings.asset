@@ -718,11 +718,11 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 0
-  cloudProjectId: 
+  cloudProjectId: 3b4bb5e4-6455-462f-bdd5-d5caed14e26a
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
-  organizationId: 
+  projectName: My project (2)
+  organizationId: peterbucy
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 
