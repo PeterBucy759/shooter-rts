@@ -24,19 +24,19 @@ public class Move : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             Debug.Log("A was pressed");
-            rb.AddTorque(0, -torque, 0, ForceMode.Impulse);
+            rb.AddTorque(0, -torque, 0, ForceMode.Force);
         }
 
         if (Input.GetKey(KeyCode.S))
         {
             Debug.Log("S was pressed");
-            //wil drop mine
+            rb.AddRelativeForce(0, 0, -thrust, ForceMode.Acceleration);
         }
 
         if (Input.GetKey(KeyCode.D))
         {
             Debug.Log("D was pressed");
-            rb.AddTorque(0, torque, 0, ForceMode.Impulse);
+            rb.AddTorque(0, torque, 0, ForceMode.Force);
         }
 
     }
