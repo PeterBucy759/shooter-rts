@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
+//using UnityEngine.Networking;
 
-public class Move : MonoBehaviour
+public class Move : NetworkBehaviour
 {
     public float thrust = 10;
     public float torque = 1;
@@ -14,8 +16,14 @@ public class Move : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
     }
+
+    public override void OnNetworkSpawn()
+    {
+        if (!IsOwner) Destroy(this);
+    }
+
     // Update is called once per frame
-    void Update()
+    void Update()   
     {
         if (Input.GetKey(KeyCode.W))
         {
