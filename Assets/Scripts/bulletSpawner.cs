@@ -6,10 +6,10 @@ using Unity.Netcode;
 public class bulletSpawner : NetworkBehaviour
 {
     public GameObject bulletprefab;
-    // Start is called before the first frame update
-    void Start()
-    {
 
+    public override void OnNetworkSpawn()
+    {
+        if (!IsOwner) Destroy(this);
     }
 
     // Update is called once per frame
@@ -18,31 +18,34 @@ public class bulletSpawner : NetworkBehaviour
        
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            SpawnBullet();
+            SpawnBulletServer();
 
             Debug.Log("Bullet Spawned");
         }
 
     }
-    void SpawnBullet()
+
+    /*void SpawnBullet()
     {
         if (IsServer)
             SpawnBulletServer();
+
         else
             SpawnBulletServerRPC();
-    }
+    }*/
+
     void SpawnBulletServer()
     {
-        GameObject go = Instantiate(bulletprefab, NetworkManager.Singleton.LocalClient.PlayerObject.transform.position, NetworkManager.Singleton.LocalClient.PlayerObject.transform.rotation);
+        GameObject go = Instantiate(bulletprefab, transform.position, transform.rotation);
 
         go.GetComponent<NetworkObject>().Spawn();
     }
-    [ServerRpc]
+    //[ServerRpc]
 
-    void SpawnBulletServerRPC()
+    /*void SpawnBulletServerRPC()
     {
         SpawnBulletServer();
-    }
+    }*/
     
 }
     

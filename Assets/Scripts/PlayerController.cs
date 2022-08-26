@@ -14,6 +14,7 @@ public class PlayerController : NetworkBehaviour
     {
         rb = GetComponent<Rigidbody>();
     }
+
     public override void OnNetworkSpawn()
     {
         if (!IsOwner) Destroy(this);
